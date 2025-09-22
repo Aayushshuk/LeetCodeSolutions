@@ -12,8 +12,8 @@ public:
         long d = divisor;
         n = abs(n);
         d = abs(d);
-        divisor = abs(divisor);
-        long ans =0;
+    
+        int ans =0;
         while(n >= d){
             int count =0;
             while(n >= (d << (count+1))){
