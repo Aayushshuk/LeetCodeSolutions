@@ -12,37 +12,27 @@
 class Solution {
 public:
     int countNodes(TreeNode* root) {
-        if (root == NULL) {
-            return 0;
-        }
-        // Get height from left side
+        if(root == NULL) return 0;
         int lh = findHeightLeft(root);
-        // Get height from right side
         int rh = findHeightRight(root);
-        // If heights are equal, it's a perfect binary tree
-        if (lh == rh) {
-            // Use formula: 2^h - 1
-            return (1 << lh) - 1;
-        }
-        // Otherwise, recursively count left and right subtrees
+
+        if(lh == rh) return (1<<lh)-1;
         return 1 + countNodes(root->left) + countNodes(root->right);
     }
-    int findHeightLeft(TreeNode* node) {
-        int height = 0;
-        while (node) {
-            height++;
-            node = node->left;
+    int findHeightLeft(TreeNode* node){
+        int left =0;
+        while(node){
+            left++;
+            node =node ->left;
         }
-        return height;
+        return left;
     }
-
-    // Helper function to find height of rightmost path
-    int findHeightRight(TreeNode* node) {
-        int height = 0;
-        while (node) {
-            height++;
+    int findHeightRight(TreeNode* node){
+        int right =0;
+        while(node){
+            right++;
             node = node->right;
         }
-        return height;
+        return right;
     }
 };
